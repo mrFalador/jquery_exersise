@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script ENGINE="text/javascript" src="https://code.jquery.com/jquery-1.11.2.js "></script>
+    <title>Menu jQuerry</title>
+</head>
+<body>
+    <div class="menu">
+        <select name="test" id="test">
+            <option value="v1" selected>Вариант 1</option>
+            <option value="v2">Вариант 2</option>
+            <option value="v3">Вариант 3</option>
+        </select>
+    </div>
+    <div class="result">
+    </div>
+    <script type="text/javascript">
+        $("sMenu").change(function(){
+            console.log(("select option:selected").text())
+        })
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("select").change(function(){
+                if($(this).val() == 0) return false;
+                var zn = $(this).val()
+                $.post(
+                    "./result.php",
+                    {
+                        id: zn,
+                    },
+                );
+            })
+            $(".result").load("./result.php")
+        })
+    </script>
+</body>
+</html>
